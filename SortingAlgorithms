@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication5
+{
+    public delegate bool SortingDirectionsBag(int i ,int j);
+
+    class SortingAlgorithms
+    {
+        public static int[] BubbleSort(int[] _items, SortingDirectionsBag _sDB)
+        {
+            int temp;
+
+            for (int i = _items.Length-1; i >= 0; i--)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    if (_sDB(_items[j-1],_items[j]))
+                    {
+                        temp = _items[j - 1];
+                        _items[j - 1] = _items[j];
+                        _items[j] = temp;
+                    }   
+                }
+            }
+            return _items;
+        }
+    }
+}
